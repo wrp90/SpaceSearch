@@ -1,5 +1,7 @@
 ///Grabbing HTML elements for content display
 const contentContainer = document.querySelector('.content-container');
+const searchButton = document.querySelector('.search-button');
+const searchInput = document.querySelector('.input');
 
 ///API keys.  SpaceX doesn't require one so we only have the nasa API
 const NASAKEY = 'rGj6kPIAJIsi3hNRQdIM2RWEGPfyPg6ge2Eqr32Z';
@@ -14,6 +16,7 @@ const fetchNASA = () => {
 };
 
 ///Fetch for SpaceX API.  See: https://github.com/r-spacex/SpaceX-API/blob/master/docs/README.md
+///Also See: https://docs.spacexdata.com/
 const fetchSpaceX = () => {
     fetch(`https://api.spacexdata.com/v3`)
         .then(response => response.json()).then(data => {
@@ -25,3 +28,9 @@ const fetchSpaceX = () => {
 ///Calling the functions for testing
 fetchNASA();
 fetchSpaceX();
+
+
+searchInput.addEventListener('input', e => {
+    const value = e.target.value
+    console.log(value)
+})
