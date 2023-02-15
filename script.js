@@ -1,11 +1,27 @@
-const APIKey = 'NzX4QtjpAEpf5pgpmAvgpPdsO5ytlTsU';
+///Grabbing HTML elements for content display
+const contentContainer = document.querySelector('.content-container');
 
-//API call 
-const fetchRequest = () => {
-    fetch(`https://api.tomtom.com/search/2/search/pizza.json?key=${APIKey}&lat=37.8085&lon=-122.4239`)
+///API keys.  SpaceX doesn't require one so we only have the nasa API
+const NASAKEY = 'rGj6kPIAJIsi3hNRQdIM2RWEGPfyPg6ge2Eqr32Z';
+
+//Fetch for NASA API.  See: https://api.nasa.gov/
+const fetchNASA = () => {
+    ///This is fetching a specific 
+    fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASAKEY}`)
         .then(response => response.json()).then(data => {
-            console.log(data)
+            console.log('NASA Data:', data);
         })
-}
+};
 
-fetchRequest();
+///Fetch for SpaceX API.  See: https://github.com/r-spacex/SpaceX-API/blob/master/docs/README.md
+const fetchSpaceX = () => {
+    fetch(`https://api.spacexdata.com/v3`)
+        .then(response => response.json()).then(data => {
+            console.log('SpaceX Data:', data);
+        })
+};
+
+
+///Calling the functions for testing
+fetchNASA();
+fetchSpaceX();
