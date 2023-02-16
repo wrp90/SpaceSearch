@@ -41,17 +41,15 @@ const fetchCapsules = () => {
 
 
 /// Calling the functions for testing
-fetchNASA();
-fetchSpaceX();
+// fetchNASA();
+// fetchSpaceX();
 
-
-/// Search input listener to grab the user input
-searchInput.addEventListener('input', e => {
-    const value = e.target.value
-    console.log(value)
-})
 
 /// Search Button event listener
-searchButton.addEventListener('click', () => {
-   
-})
+searchButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(searchInput.value);
+    if (searchInput.value == 'capsules') {
+        fetchCapsules();
+    }
+});
