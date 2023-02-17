@@ -37,6 +37,7 @@ const fetchCapsules = () => {
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
+            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -52,6 +53,7 @@ const fetchCompanyInfo = () => {
             const companyName = document.createElement('p');
 
             companyName.innerText = data.name;
+            div.innerHTML = '';
 
             div.append(companyName);
             contentContainer.appendChild(div);
@@ -67,6 +69,7 @@ const fetchCores = () => {
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
+            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -83,6 +86,9 @@ const fetchCrew = () => {
 
             id.innerText = data[0].id;
             img.src = data[0].image;
+            div.innerHTML = '';
+
+            img.classList.add('bio-picture')
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -99,6 +105,7 @@ const fetchDragons = () => {
             const description = document.createElement('p');
 
             description.innerText = data[0].description;
+            div.innerHTML = '';
 
             div.append(description)
             contentContainer.appendChild(div);
@@ -114,6 +121,7 @@ const fetchLandingPads = () => {
             const details = document.createElement('p');
 
             details.innerText = data[0].details;
+            div.innerHTML = '';
 
             div.append(details);
             contentContainer.appendChild(div);
@@ -129,6 +137,7 @@ const fetchLaunches = () => {
             const name = document.createElement('p');
 
             name.innerText = data[0].name;
+            div.innerHTML = '';
 
             div.append(name);
             contentContainer.appendChild(div);
@@ -144,6 +153,7 @@ const fetchLaunchPads = () => {
             const fullName = document.createElement('p');
 
             fullName.innerText = data[0].full_name;
+            div.innerHTML = '';
 
             div.append(fullName);
             contentContainer.appendChild(div);
@@ -159,6 +169,7 @@ const fetchPayLoads = () => {
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
+            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -170,13 +181,16 @@ const fetchRockets = () => {
     fetch('https://api.spacexdata.com/v4/rockets')
         .then(response => response.json()).then(data => {
             console.log(data);   
+            for (i=0; i < data.length; i++) {
+                const id = document.createElement('p');
+                const description = document.createElement('p');
 
-            const id = document.createElement('p');
-
-            id.innerText = data[0].id;
-
-            div.append(id);
-            contentContainer.appendChild(div);
+                description.innerText = data[i].description;
+                id.innerText = data[i].id;
+    
+                div.append(id, description);
+                contentContainer.appendChild(div);
+            }
         });
 };
 
@@ -190,6 +204,7 @@ const fetchShips = () => {
 
             id.innerText = data[0].id;
             img.src = data[0].image;
+            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -206,6 +221,7 @@ const fetchStarlink = () => {
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
+            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -221,6 +237,7 @@ const fetchHistory = () => {
             const details = document.createElement('p');
 
             details.innerText = data[0].details;
+            div.innerHTML = '';
 
             div.append(details);
             contentContainer.appendChild(div);
@@ -236,33 +253,35 @@ const fetchHistory = () => {
 searchButton.addEventListener('click', (e) => {
     e.preventDefault();
     console.log(searchInput.value);
-    if (searchInput.value == 'Capsules') {
+    const userInput = searchInput.value.toLowerCase();
+    if (userInput == 'capsules') {
         fetchCapsules();
-    } else if (searchInput.value == 'Company info') {
+    } else if (userInput == 'company info') {
         fetchCompanyInfo();
-    } else if (searchInput.value == 'Cores') {
+    } else if (userInput == 'cores') {
         fetchCores();
-    } else if (searchInput.value == 'Crew') {
+    } else if (userInput == 'crew') {
         fetchCrew();
-    } else if (searchInput.value == 'Dragons') {
+    } else if (userInput == 'dragons') {
         fetchDragons();
-    } else if (searchInput.value == 'Landing pads') {
+    } else if (userInput == 'landing pads') {
         fetchLandingPads();
-    } else if (searchInput.value == 'Launches') {
+    } else if (userInput == 'launches') {
         fetchLaunches();
-    } else if (searchInput.value == 'Launch pads') {
+    } else if (userInput == 'launch pads') {
         fetchLaunchPads()
-    } else if (searchInput.value == 'Payloads') {
+    } else if (userInput == 'payloads') {
         fetchPayLoads();
-    } else if (searchInput.value == 'Rockets') {
+    } else if (userInput == 'rockets') {
         fetchRockets();
-    } else if (searchInput.value == 'Ships') {
+    } else if (userInput == 'ships') {
         fetchShips();
-    } else if (searchInput.value == 'Starlink') {
+    } else if (userInput == 'starlink') {
         fetchStarlink();
-    } else if (searchInput.value == 'History') {
+    } else if (userInput == 'history') {
         fetchHistory();
     } else {
         alert('Please enter a valid search term')
     }
+    searchInput.value = '';
 });
