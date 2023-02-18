@@ -33,7 +33,7 @@ const fetchCapsules = () => {
     fetch('https://api.spacexdata.com/v4/capsules')
         .then(response => response.json()).then(data => {
             console.log(data)
-            div.innerHTML = '';
+            contentContainer.innerHTML = '';
             for (i = 0; i < data.length; i++) {
                 const div = document.createElement('div');
                 div.className = 'display-div';
@@ -48,6 +48,9 @@ const fetchCapsules = () => {
                 landLandings.innerText = 'Land Landings:' + ' ' + data[i].land_landings;
                 waterLandings.innerText = 'Water Landings:' + ' ' + data[i].water_landings;
                 lastUpdates.innerText = 'Latest Update:' + ' ' + data[i].last_update;
+                if (data[i].last_update == 'null') {
+                    lastUpdates.innerText = 'Latest Update:' + 'No information given'
+                }
 
 
                 div.append(id, type, landLandings, waterLandings, lastUpdates);
@@ -60,14 +63,26 @@ const fetchCapsules = () => {
 const fetchCompanyInfo = () => {
     fetch('https://api.spacexdata.com/v4/company')
         .then(response => response.json()).then(data => {
-            console.log(data)
+            console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const companyName = document.createElement('p');
+            const ceo = document.createElement('p');
+            const cheifTechnologyOfficer = document.createElement('p');
+            const ctoPropulsion = document.createElement('p');
+            const founded = document.createElement('p');
+            const summary = document.createElement('p');
 
-            companyName.innerText = data.name;
-            div.innerHTML = '';
+            companyName.innerText = 'Company Name:' + ' ' + data.name;
+            ceo.innerText = 'CEO:' + ' ' + data.ceo;
+            cheifTechnologyOfficer.innerText = 'Chief Technology Officer:' + ' ' + data.cto;
+            ctoPropulsion.innerText = 'Chief Technology Officer-Propulstion:' + ' ' + data.cto_propulsion;
+            founded.innerText = 'Founded:' + ' ' + data.founded;
+            summary.innerText = 'Summary:' + ' ' + data.summary;
 
-            div.append(companyName);
+            div.append(companyName, founded, ceo, cheifTechnologyOfficer, ctoPropulsion, summary);
             contentContainer.appendChild(div);
         });
 };
@@ -76,12 +91,14 @@ const fetchCompanyInfo = () => {
 const fetchCores = () => {
     fetch('https://api.spacexdata.com/v4/cores')
         .then(response => response.json()).then(data => {
-            console.log(data)
+            console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
-            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -93,12 +110,14 @@ const fetchCrew = () => {
     fetch('https://api.spacexdata.com/v4/crew')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
             img.src = data[0].image;
-            div.innerHTML = '';
 
             img.classList.add('bio-picture')
 
@@ -113,11 +132,13 @@ const fetchDragons = () => {
     fetch('https://api.spacexdata.com/v4/dragons')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const description = document.createElement('p');
 
             description.innerText = data[0].description;
-            div.innerHTML = '';
 
             div.append(description)
             contentContainer.appendChild(div);
@@ -129,11 +150,13 @@ const fetchLandingPads = () => {
     fetch('https://api.spacexdata.com/v4/landpads')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const details = document.createElement('p');
 
             details.innerText = data[0].details;
-            div.innerHTML = '';
 
             div.append(details);
             contentContainer.appendChild(div);
@@ -145,11 +168,14 @@ const fetchLaunches = () => {
     fetch('https://api.spacexdata.com/v5/launches')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
+            
 
             const name = document.createElement('p');
 
             name.innerText = data[0].name;
-            div.innerHTML = '';
 
             div.append(name);
             contentContainer.appendChild(div);
@@ -161,11 +187,13 @@ const fetchLaunchPads = () => {
     fetch('https://api.spacexdata.com/v4/launchpads')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const fullName = document.createElement('p');
 
             fullName.innerText = data[0].full_name;
-            div.innerHTML = '';
 
             div.append(fullName);
             contentContainer.appendChild(div);
@@ -177,11 +205,13 @@ const fetchPayLoads = () => {
     fetch('https://api.spacexdata.com/v4/payloads')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
-            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -193,8 +223,10 @@ const fetchRockets = () => {
     fetch('https://api.spacexdata.com/v4/rockets')
         .then(response => response.json()).then(data => {
             console.log(data);
-            div.innerHTML = '';
+            contentContainer.innerHTML = '';
             for (i = 0; i < data.length; i++) {
+                const div = document.createElement('div');
+                div.className = 'display-div';
                 const id = document.createElement('p');
                 const description = document.createElement('p');
 
@@ -212,12 +244,14 @@ const fetchShips = () => {
     fetch('https://api.spacexdata.com/v4/ships')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
             img.src = data[0].image;
-            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -230,11 +264,13 @@ const fetchStarlink = () => {
     fetch('https://api.spacexdata.com/v4/starlink')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const id = document.createElement('p');
 
             id.innerText = data[0].id;
-            div.innerHTML = '';
 
             div.append(id);
             contentContainer.appendChild(div);
@@ -246,11 +282,13 @@ const fetchHistory = () => {
     fetch('https://api.spacexdata.com/v4/history')
         .then(response => response.json()).then(data => {
             console.log(data);
+            contentContainer.innerHTML = '';
+            const div = document.createElement('div');
+            div.className = 'display-div';
 
             const details = document.createElement('p');
 
             details.innerText = data[0].details;
-            div.innerHTML = '';
 
             div.append(details);
             contentContainer.appendChild(div);
@@ -261,10 +299,7 @@ const fetchHistory = () => {
 // fetchNASA();
 // fetchSpaceX();
 
-
-/// Search Button event listener
-searchButton.addEventListener('click', (e) => {
-    e.preventDefault();
+const getAllData = () => {
     console.log(searchInput.value);
     const userInput = searchInput.value.toLowerCase();
     if (userInput == 'capsules') {
@@ -297,4 +332,17 @@ searchButton.addEventListener('click', (e) => {
         alert('Please enter a valid search term')
     }
     searchInput.value = '';
+}
+
+/// Search Button event listener
+searchButton.addEventListener('click', (e) => {
+    e.preventDefault();
+    getAllData();
 });
+
+searchInput.addEventListener('keyup', (e) => {
+    if (e.keyCode == 13) {
+        e.preventDefault();
+        getAllData();
+    }
+})
