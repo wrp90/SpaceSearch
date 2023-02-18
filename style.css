@@ -1,3 +1,18 @@
 .bio-picture {
     height: 500px;
 }
+
+.search-bar-container {
+    text-align: center;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.display-div {
+    border: solid 1px red;
+    width: 18rem;
+}
