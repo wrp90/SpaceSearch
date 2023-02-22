@@ -36,7 +36,7 @@ const fetchCapsules = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the data elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const id = document.createElement('p');
@@ -63,7 +63,7 @@ const fetchCompanyInfo = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
-            /// Creating the elements
+            /// Creating the HTML elements
             const div = document.createElement('div');
             div.className = 'display-div';
             const companyName = document.createElement('p');
@@ -93,7 +93,7 @@ const fetchCores = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const id = document.createElement('p');
@@ -122,7 +122,7 @@ const fetchCrew = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 const img = document.createElement('img');
                 div.className = 'display-div';
@@ -155,7 +155,7 @@ const fetchDragons = () => {
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
 
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const img = document.createElement('img');
@@ -182,7 +182,7 @@ const fetchLandingPads = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const img = document.createElement('img');
@@ -213,7 +213,7 @@ const fetchLaunches = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const name = document.createElement('p');
@@ -241,7 +241,7 @@ const fetchLaunchPads = () => {
             contentContainer.innerHTML = '';
             /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const img = document.createElement('img');
@@ -270,8 +270,9 @@ const fetchPayLoads = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
+            /// Looping through the data array
             for (i = 0; i < data.length; i++) {
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const id = document.createElement('p');
@@ -283,9 +284,9 @@ const fetchPayLoads = () => {
                 const type = document.createElement('p');
                 /// Applying the Data
                 name.innerText = 'Name:' + ' ' + data[i].name;
-                orbit.innerText = 'Orbit:' + ' ' +  data[i].orbit;
-                regime.innerText = 'Regime:' + ' ' +  data[i].regime;
-                reused.innerText = 'Reused:' + ' ' +  data[i].reused;
+                orbit.innerText = 'Orbit:' + ' ' + data[i].orbit;
+                regime.innerText = 'Regime:' + ' ' + data[i].regime;
+                reused.innerText = 'Reused:' + ' ' + data[i].reused;
                 lifespan.innerText = data[i].lifespan ? 'Lifespan:' + ' ' + data[i].lifespan : 'Lifespan: No information given';
                 type.innerText = 'Type:' + ' ' + data[i].type;
                 id.innerText = data[i].id;
@@ -302,10 +303,11 @@ const fetchRockets = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
+            /// Looping through the data array
             for (i = 0; i < data.length; i++) {
                 const div = document.createElement('div');
                 div.className = 'display-div';
-                /// Creating the Elements
+                /// Creating the HTML elements
                 const id = document.createElement('p');
                 const description = document.createElement('p');
                 /// Applying the Data
@@ -324,17 +326,22 @@ const fetchShips = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
-            const div = document.createElement('div');
-            div.className = 'display-div';
-            /// Creating the Elements
-            const id = document.createElement('p');
-            /// Applying the Data
-            id.innerText = data[0].id;
-            img.src = data[0].image;
-            /// Appending the Data
-            div.append(id);
-            contentContainer.appendChild(div);
-            div.append(img);
+            /// Looping through the data array
+            for (i = 0; i < data.length; i++) {
+                /// Creating the HTML elements
+                const div = document.createElement('div');
+                div.className = 'display-div';
+                const img = document.createElement('img');
+                const id = document.createElement('p');
+                /// Applying the Data
+                id.innerText = 'ID:' + ' ' + data[i].id;
+                /// Images
+                img.src = data[i].image;
+                img.classList.add('ships-imgs')
+                /// Appending the Data
+                div.append(id, img);
+                contentContainer.appendChild(div);
+            }
         });
 };
 
@@ -344,15 +351,18 @@ const fetchStarlink = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
-            const div = document.createElement('div');
-            div.className = 'display-div';
-            /// Creating the Elements
-            const id = document.createElement('p');
-            /// Applying the Data
-            id.innerText = data[0].id;
-            /// Appending the Data
-            div.append(id);
-            contentContainer.appendChild(div);
+            /// Looping through the data array
+            for (i = 0; i < data.lenght; i++) {
+                /// Creating the HTML elements
+                const div = document.createElement('div');
+                div.className = 'display-div';
+                const id = document.createElement('p');
+                /// Applying the Data
+                id.innerText = data[i].id;
+                /// Appending the Data
+                div.append(id);
+                contentContainer.appendChild(div);
+            }
         });
 };
 
@@ -362,15 +372,18 @@ const fetchHistory = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
-            const div = document.createElement('div');
-            div.className = 'display-div';
-            /// Creating the Elements
-            const details = document.createElement('p');
-            /// Applying the Data
-            details.innerText = data[0].details;
-            /// Appending the Data
-            div.append(details);
-            contentContainer.appendChild(div);
+            /// Looping through the data array
+            for (i = 0; i < data.lenght; i++) {
+                /// Creating the HTML elements
+                const div = document.createElement('div');
+                div.className = 'display-div';
+                const details = document.createElement('p');
+                /// Applying the Data
+                details.innerText = data[i].details;
+                /// Appending the Data
+                div.append(details);
+                contentContainer.appendChild(div);
+            }
         });
 };
 
