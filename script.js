@@ -136,7 +136,6 @@ const fetchCrew = () => {
                 agency.innerText = 'Agency:' + ' ' + data[i].agency;
                 id.innerText = 'ID:' + data[i].id;
                 status.innerText = 'Status:' + ' ' + data[i].status;
-
                 /// Images
                 img.src = data[i].image;
                 img.classList.add('bio-picture')
@@ -196,6 +195,7 @@ const fetchLandingPads = () => {
                 name.innerText = 'Name:' + ' ' + data[i].full_name;
                 landingAttempts.innerText = 'Landing Attempts:' + ' ' + data[i].landing_attempts;
                 landingSuccesses.innerText = 'Landing Successes:' + ' ' + data[i].landing_successes;
+                /// Images
                 img.src = data[i].images.large[0];
                 img.classList.add('landing-pad-imgs')
                 /// Appending the Data
@@ -244,11 +244,21 @@ const fetchLaunchPads = () => {
                 /// Creating the Elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
+                const img = document.createElement('img');
                 const fullName = document.createElement('p');
+                const details = document.createElement('p');
+                const region = document.createElement('p');
+                const status = document.createElement('p');
                 /// Applying the Data
-                fullName.innerText = data[i].full_name;
+                fullName.innerText = 'Name:' + ' ' + data[i].name;
+                details.innerText = 'Details:' + ' ' + data[i].details;
+                region.innerText = 'Region:' + ' ' + data[i].region;
+                status.innerText = 'Operation Status:' + ' ' + data[i].status;
+                /// Images
+                img.src = data[i].images.large;
+                img.classList.add('launch-pad-imgs')
                 /// Appending the Data
-                div.append(fullName);
+                div.append(fullName, region, status, details, img);
                 contentContainer.appendChild(div);
             }
         });
@@ -260,15 +270,29 @@ const fetchPayLoads = () => {
         .then(response => response.json()).then(data => {
             console.log(data);
             contentContainer.innerHTML = '';
-            const div = document.createElement('div');
-            div.className = 'display-div';
-            /// Creating the Elements
-            const id = document.createElement('p');
-            /// Applying the Data
-            id.innerText = data[0].id;
-            /// Appending the Data
-            div.append(id);
-            contentContainer.appendChild(div);
+            for (i = 0; i < data.length; i++) {
+                /// Creating the Elements
+                const div = document.createElement('div');
+                div.className = 'display-div';
+                const id = document.createElement('p');
+                const name = document.createElement('p');
+                const orbit = document.createElement('p');
+                const regime = document.createElement('p');
+                const reused = document.createElement('p');
+                const lifespan = document.createElement('p');
+                const type = document.createElement('p');
+                /// Applying the Data
+                name.innerText = 'Name:' + ' ' + data[i].name;
+                orbit.innerText = 'Orbit:' + ' ' +  data[i].orbit;
+                regime.innerText = 'Regime:' + ' ' +  data[i].regime;
+                reused.innerText = 'Reused:' + ' ' +  data[i].reused;
+                lifespan.innerText = data[i].lifespan ? 'Lifespan:' + ' ' + data[i].lifespan : 'Lifespan: No information given';
+                type.innerText = 'Type:' + ' ' + data[i].type;
+                id.innerText = data[i].id;
+                /// Appending the Data
+                div.append(name, type, lifespan, regime, orbit, reused);
+                contentContainer.appendChild(div);
+            }
         });
 };
 
