@@ -20,3 +20,44 @@
     border: solid 1px red;
     width: 18rem;
 }
+.icon-bar {
+    width: 100%; /* Full-width */
+    background-color: #555; /* Dark-grey background */
+    overflow: auto; /* Overflow due to float */
+  }
+  
+  .icon-bar a {
+    float: left; /* Float links side by side */
+    text-align: center; /* Center-align text */
+    width: 20%; /* Equal width (5 icons with 20% width each = 100%) */
+    padding: 12px 0; /* Some top and bottom padding */
+    transition: all 0.3s ease; /* Add transition for hover effects */
+    color: white; /* White text color */
+    font-size: 36px; /* Increased font size */
+  }
+  
+  .icon-bar a:hover {
+    background-color: #000; /* Add a hover color */
+  }
+  
+  .active {
+    background-color: #04AA6D; /* Add an active/current color */
+  }
+ button {
+    display: inline-block;
+    background-color: #3e8dd3;
+    padding: 1px;
+    height: 35px;
+    width: 100px;
+    color: #ffffff;
+    text-align: center;
+    border: 4px double #cccccc;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer; /* add this line */
+    margin: 5px; /* add this line */
+}
+  button:hover {
+    background-color: rgb(47, 112, 226);
+}
+ 
