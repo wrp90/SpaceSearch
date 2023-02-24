@@ -19,6 +19,8 @@
 .display-div {
     border: solid 1px red;
     width: 18rem;
+    text-align: center;
+    justify-content: space-between;
 }
 
 .landing-pad-imgs {

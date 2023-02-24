@@ -450,7 +450,7 @@ const handleInput = () => {
     searchInput.value = '';
 }
 
-// function autocomplete(inp, arr) {
+// function autocomplete(searchInput, arr) {
 //     /*the autocomplete function takes two arguments,
 //     the text field element and an array of possible autocompleted values:*/
 //     var currentFocus;
@@ -491,7 +491,7 @@ const handleInput = () => {
 //         }
 //     });
 //     /*execute a function presses a key on the keyboard:*/
-//     inp.addEventListener("keydown", function (e) {
+//     searchInput.addEventListener("keydown", function (e) {
 //         var x = document.getElementById(this.id + "autocomplete-list");
 //         if (x) x = x.getElementsByTagName("div");
 //         if (e.keyCode == 40) {
@@ -548,10 +548,10 @@ const handleInput = () => {
 // }
 
 // /*An array containing all the country names in the world:*/
-// var countries = [];
+// var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'payloads', 'rockets', 'ships', 'starlink', 'history'];
 
-// /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-// autocomplete(document.getElementById("myInput"), countries);
+// /*initiate the autocomplete function on the "myInput" element, and pass along the searchTerms array as possible autocomplete values:*/
+// autocomplete(document.getElementById("input"), searchTerms);
 
 /// Search Button event listener
 searchButton.addEventListener('click', (e) => {
