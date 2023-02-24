@@ -550,8 +550,9 @@ const autocomplete = (inp, arr) => {
   /*An array containing all the country names in the world:*/
   var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'payloads', 'rockets', 'ships', 'starlink', 'history'];
   
-  /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+  /*initiate the autocomplete function on the "myInput" element, and pass along the searchTerms array as possible autocomplete values:*/
   autocomplete(searchInput, searchTerms);
+
 /// Search Button event listener
 searchButton.addEventListener('click', (e) => {
     e.preventDefault();
