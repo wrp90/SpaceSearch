@@ -450,7 +450,7 @@ const handleInput = () => {
     searchInput.value = '';
 }
 
-function autocomplete(inp, arr) {
+const autocomplete = (inp, arr) => {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
     var currentFocus;
@@ -515,7 +515,7 @@ function autocomplete(inp, arr) {
           }
         }
     });
-    function addActive(x) {
+    const addActive = (x) => {
       /*a function to classify an item as "active":*/
       if (!x) return false;
       /*start by removing the "active" class on all items:*/
@@ -525,13 +525,13 @@ function autocomplete(inp, arr) {
       /*add class "autocomplete-active":*/
       x[currentFocus].classList.add("autocomplete-active");
     }
-    function removeActive(x) {
+    const removeActive = (x) => {
       /*a function to remove the "active" class from all autocomplete items:*/
       for (var i = 0; i < x.length; i++) {
         x[i].classList.remove("autocomplete-active");
       }
     }
-    function closeAllLists(elmnt) {
+    const closeAllLists = (elmnt) => {
       /*close all autocomplete lists in the document,
       except the one passed as an argument:*/
       var x = document.getElementsByClassName("autocomplete-items");
