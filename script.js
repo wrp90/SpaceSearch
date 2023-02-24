@@ -307,14 +307,26 @@ const fetchRockets = () => {
             for (i = 0; i < data.length; i++) {
                 const div = document.createElement('div');
                 div.className = 'display-div';
+                const img = document.createElement('img');
                 /// Creating the HTML elements
                 const id = document.createElement('p');
                 const description = document.createElement('p');
+                const name = document.createElement('p');
+                const activeStatus = document.createElement('p');
+                const country = document.createElement('p');
+                const company = document.createElement('p');
                 /// Applying the Data
-                description.innerText = data[i].description;
+                name.innerText = 'Name:' + ' ' + data[i].name;
+                country.innerText = 'Country:' + ' ' + data[i].country;
+                company.innerText = 'Company:' + ' ' + data[i].company;
+                activeStatus.innerText = 'Active:' + ' ' + data[i].active;
+                description.innerText = 'Description:' + ' ' + data[i].description;
                 id.innerText = data[i].id;
+                /// Images
+                img.src = data[i].flickr_images[i];
+                img.classList.add('rocket-imgs');
                 /// Appending the Data
-                div.append(id, description);
+                div.append(name, company, country, activeStatus, description, img);
                 contentContainer.appendChild(div);
             }
         });
@@ -333,13 +345,19 @@ const fetchShips = () => {
                 div.className = 'display-div';
                 const img = document.createElement('img');
                 const id = document.createElement('p');
+                const name = document.createElement('p');
+                const activeStatus = document.createElement('p');
+                const homePort = document.createElement('p');
                 /// Applying the Data
                 id.innerText = 'ID:' + ' ' + data[i].id;
+                name.innerText = 'Name:' + ' ' + data[i].name;
+                activeStatus.innerText = 'Active:' + ' ' + data[i].active;
+                homePort.innerText = 'Home Port:' + ' ' + data[i].home_port;
                 /// Images
-                img.src = data[i].image;
+                img.src = data[i].image ? data[i].image : "https://via.placeholder.com/150"
                 img.classList.add('ships-imgs')
                 /// Appending the Data
-                div.append(id, img);
+                div.append(name, activeStatus, img);
                 contentContainer.appendChild(div);
             }
         });
@@ -352,15 +370,17 @@ const fetchStarlink = () => {
             console.log(data);
             contentContainer.innerHTML = '';
             /// Looping through the data array
-            for (i = 0; i < data.lenght; i++) {
+            for (i = 0; i < data.length; i++) {
                 /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const id = document.createElement('p');
+                const version = document.createElement('p');
                 /// Applying the Data
-                id.innerText = data[i].id;
+                id.innerText = 'ID:' + ' ' + data[i].id;
+                version.innerText ='Version:' + ' ' + data[i].version;
                 /// Appending the Data
-                div.append(id);
+                div.append(id, version);
                 contentContainer.appendChild(div);
             }
         });
@@ -373,15 +393,20 @@ const fetchHistory = () => {
             console.log(data);
             contentContainer.innerHTML = '';
             /// Looping through the data array
-            for (i = 0; i < data.lenght; i++) {
+            for (i = 0; i < data.length; i++) {
                 /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
                 const details = document.createElement('p');
+                const title = document.createElement('p');
+                const date = document.createElement('p');
+                const jsDate = new Date(data[i].event_date_utc).toString().substring(4, 15);
                 /// Applying the Data
-                details.innerText = data[i].details;
+                details.innerText = 'Details:' + ' ' + data[i].details;
+                title.innerText = 'Title:' + ' ' + data[i].title;
+                date.innerText = jsDate;
                 /// Appending the Data
-                div.append(details);
+                div.append(title, date, details);
                 contentContainer.appendChild(div);
             }
         });
