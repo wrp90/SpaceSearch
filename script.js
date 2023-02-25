@@ -94,7 +94,7 @@ const fetchCompanyInfo = () => {
             contentContainer.innerHTML = '';
             /// Creating the HTML elements
             const div = document.createElement('div');
-            div.className = 'display-div';
+            div.className = 'display-div-company-info';
             const companyName = document.createElement('p');
             const ceo = document.createElement('p');
             const cheifTechnologyOfficer = document.createElement('p');
