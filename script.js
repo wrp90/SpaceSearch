@@ -10,23 +10,49 @@ const div = document.createElement('div');
 /// API keys.  SpaceX doesn't require one so we only have the nasa API Key
 const NASAKEY = 'rGj6kPIAJIsi3hNRQdIM2RWEGPfyPg6ge2Eqr32Z';
 
-/// Fetch for NASA API.  See: https://api.nasa.gov/
-const fetchNASA = () => {
+/// Fetches for NASA API.  See: https://api.nasa.gov/
+const imgOfTheDay = () => {
     /// This is fetching a specific object
     fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASAKEY}`)
         .then(response => response.json()).then(data => {
+            /// Clearing content container
+            contentContainer.innerHTML = '';
             console.log('NASA Data:', data);
+            /// Creating HTML elements
+            const div = document.createElement('p');
+            const img = document.createElement('img');
+            /// Setting the img source
+            img.src = data.url;
+            img.classList.add('pic-of-the-day')
+            /// Appending the content
+            div.append(img);
+            contentContainer.appendChild(div);
         });
 };
 
-/// Fetch for SpaceX API.  See: https://github.com/r-spacex/SpaceX-API/blob/master/docs/README.md
-/// Also See: https://docs.spacexdata.com/
-const fetchSpaceX = () => {
-    fetch(`https://api.spacexdata.com/v3`)
+/// Mars images from the NASA API
+const marsImgs = () => {
+    fetch(`https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&camera=fhaz&api_key=${NASAKEY}`)
         .then(response => response.json()).then(data => {
-            console.log('SpaceX Data:', data);
+            console.log('NASA Data:', data);
+            contentContainer.innerHTML = '';
+            /// Looping through the pictures array
+            for (i = 0; i < data.photos.length; i++) {
+                /// Creating HTML elements
+                const div = document.createElement('p');
+                const img = document.createElement('img');
+                /// Setting the img source
+                img.src = data.photos[i].img_src;
+                img.classList.add('mars-imgs');
+                /// Appending the content
+                div.append(img);
+                contentContainer.appendChild(div);
+            }
         });
 };
+
+/// These are all fetches for the SpaceX API
+/// *******************************************
 
 /// Function to catch the capsules data from the api for SpaceX
 const fetchCapsules = () => {
@@ -444,6 +470,10 @@ const handleInput = () => {
         fetchStarlink();
     } else if (userInput == 'history') {
         fetchHistory();
+    } else if (userInput == 'picture of the day') {
+        imgOfTheDay();
+    } else if (userInput == 'mars photos') {
+        marsImgs();
     } else {
         alert('Invalid Search Term');
     }
@@ -548,7 +578,7 @@ const autocomplete = (inp, arr) => {
 }
 
 /*An array containing all the country names in the world:*/
-var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'payloads', 'rockets', 'ships', 'starlink', 'history'];
+var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'mars photos', 'payloads', 'picture of the day', 'rockets', 'ships', 'starlink', 'history'];
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the searchTerms array as possible autocomplete values:*/
 autocomplete(searchInput, searchTerms);
