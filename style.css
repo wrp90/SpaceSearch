@@ -71,6 +71,18 @@ body {
     height: 160px;
 }
 
+/* /// these are the NASA API pics */
+.pic-of-the-day {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+/* // NASA API PICS */
+.mars-imgs {
+    text-align: center;
+}
+
 button {
     display: inline-block;
     background-color: #3e8dd3;
