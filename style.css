@@ -52,6 +52,15 @@ body {
     background-color: #cccccc;
 }
 
+.display-div-company-info {
+    border: solid 1px red;
+    width: 18rem;
+    text-align: center;
+    justify-content: space-between;
+    background-color: #cccccc;
+    margin: auto;
+}
+
 .landing-pad-imgs {
     height: 125px;
 }
