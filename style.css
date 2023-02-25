@@ -1,13 +1,41 @@
+body {
+    background-image: url("space-station.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.h-one-style {
+    display: table;
+    /* keep the background color wrapped tight */
+    margin: 0px auto 0px auto;
+    /* keep the table centered */
+    background-color: black;
+    color: tomato;
+    text-shadow: 2px 2px w;
+}
+
+
+
 .bio-picture {
     height: 200px;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .dragon-pictures {
     height: 125px;
+    height: 200px;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .search-bar-container {
     text-align: center;
+}
+
+.search-bar {
+    display: inline-block;
 }
 
 .content-container {
@@ -21,6 +49,7 @@
     width: 18rem;
     text-align: center;
     justify-content: space-between;
+    background-color: #cccccc;
 }
 
 .landing-pad-imgs {
@@ -33,6 +62,9 @@
 
 .ships-imgs {
     height: 115px;
+    height: 200px;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .rocket-imgs {
@@ -50,9 +82,14 @@ button {
     border: 4px double #cccccc;
     border-radius: 8px;
     font-size: 16px;
-    cursor: pointer; 
-    margin: 5px; 
+    cursor: pointer;
+    margin: 5px;
 }
-  button:hover {
+
+button:hover {
     background-color: rgb(47, 112, 226);
+}
+
+.autocomplete-items {
+    background-color: white;
 }
