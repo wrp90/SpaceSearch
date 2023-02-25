@@ -7,6 +7,9 @@ const searchInput = document.querySelector('.input');
 const img = document.createElement('img');
 const div = document.createElement('div');
 
+/*An array containing all the country names in the world:*/
+var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'mars photos', 'payloads', 'picture of the day', 'rockets', 'ships', 'starlink', 'history']
+
 /// API keys.  SpaceX doesn't require one so we only have the nasa API Key
 const NASAKEY = 'rGj6kPIAJIsi3hNRQdIM2RWEGPfyPg6ge2Eqr32Z';
 
@@ -480,6 +483,7 @@ const handleInput = () => {
     searchInput.value = '';
 }
 
+/// Autocomplete function pulled from w3schools
 const autocomplete = (inp, arr) => {
     /*the autocomplete function takes two arguments,
     the text field element and an array of possible autocompleted values:*/
@@ -576,9 +580,6 @@ const autocomplete = (inp, arr) => {
         closeAllLists(e.target);
     });
 }
-
-/*An array containing all the country names in the world:*/
-var searchTerms = ['capsules', 'company info', 'cores', 'crew', 'dragons', 'landing pads', 'launches', 'launch pads', 'mars photos', 'payloads', 'picture of the day', 'rockets', 'ships', 'starlink', 'history'];
 
 /*initiate the autocomplete function on the "myInput" element, and pass along the searchTerms array as possible autocomplete values:*/
 autocomplete(searchInput, searchTerms);

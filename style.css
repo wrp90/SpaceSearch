@@ -50,6 +50,7 @@ body {
     text-align: center;
     justify-content: space-between;
     background-color: #cccccc;
+    margin: auto;
 }
 
 .landing-pad-imgs {
