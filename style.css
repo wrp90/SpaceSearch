@@ -2,6 +2,7 @@ body {
     background-image: url("space-station.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
+    box-sizing: border-box;
 }
 
 
@@ -32,28 +33,32 @@ body {
 
 .search-bar-container {
     text-align: center;
+ 
 }
 
 .search-bar {
     display: inline-block;
+    
 }
 
 .content-container {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .display-div {
-    border: solid 1px red;
+    border: solid 1px tomato;
     width: 18rem;
     text-align: center;
     justify-content: space-between;
     background-color: #cccccc;
+    margin-bottom: 5px;
 }
 
 .display-div-company-info {
-    border: solid 1px red;
+    border: solid 1px;
     width: 18rem;
     text-align: center;
     justify-content: space-between;
@@ -63,33 +68,32 @@ body {
 
 .landing-pad-imgs {
     height: 125px;
-}
-
-.launch-pad-imgs {
-    height: 140px;
-}
-
-.ships-imgs {
-    height: 115px;
-    height: 200px;
     max-width: 100%;
     padding: 10px;
 }
 
-.rocket-imgs {
-    height: 160px;
+.launch-pad-imgs {
+    height: 140px;
+
+
 }
 
 /* /// these are the NASA API pics */
 .pic-of-the-day {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
+
+    border: 3px solid tomato;
+
 }
+
 
 /* // NASA API PICS */
 .mars-imgs {
-    text-align: center;
+    border: 3px solid tomato;
+    width: 100%;
+}
+
+.mars-div {
+    width: 48%;
 }
 
 button {
@@ -113,4 +117,16 @@ button:hover {
 
 .autocomplete-items {
     background-color: white;
+}
+
+.rocket-imgs {
+    height: 150px;
+    max-width: 100%;
+    padding: 10px;
+}
+
+.ships-imgs {
+
+width: 100%;
+padding: 10px;
 }
