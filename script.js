@@ -42,11 +42,12 @@ const marsImgs = () => {
             /// Looping through the pictures array
             for (i = 0; i < data.photos.length; i++) {
                 /// Creating HTML elements
-                const div = document.createElement('p');
+                const div = document.createElement('div');
                 const img = document.createElement('img');
                 /// Setting the img source
                 img.src = data.photos[i].img_src;
                 img.classList.add('mars-imgs');
+                div.classList.add('mars-div');
                 /// Appending the content
                 div.append(img);
                 contentContainer.appendChild(div);
@@ -159,7 +160,11 @@ const fetchCrew = () => {
                 const name = document.createElement('p');
                 const agency = document.createElement('p');
                 const status = document.createElement('p');
-                const wiki = document.createElement('p');
+
+                /// Make the image clickable to link to Wikipedia
+                const wiki = document.createElement('a');
+                wiki.href = data[i].wikipedia;
+                wiki.setAttribute('target', '_blank');
                 /// Applying the data
                 name.innerText = 'Name:' + ' ' + data[i].name;
                 agency.innerText = 'Agency:' + ' ' + data[i].agency;
@@ -167,9 +172,12 @@ const fetchCrew = () => {
                 status.innerText = 'Status:' + ' ' + data[i].status;
                 /// Images
                 img.src = data[i].image;
-                img.classList.add('bio-picture')
+                img.setAttribute('title','Visit Wiki Link on Click');
+                img.classList.add('bio-picture');
+
+                wiki.appendChild(img);
                 /// Append the data
-                div.append(name, agency, status, img);
+                div.append(name, agency, status,wiki);
                 contentContainer.appendChild(div);
             }
         });
@@ -372,21 +380,31 @@ const fetchShips = () => {
                 /// Creating the HTML elements
                 const div = document.createElement('div');
                 div.className = 'display-div';
-                const img = document.createElement('img');
-                const id = document.createElement('p');
-                const name = document.createElement('p');
-                const activeStatus = document.createElement('p');
-                const homePort = document.createElement('p');
+                
                 /// Applying the Data
+                const id = document.createElement('p');
                 id.innerText = 'ID:' + ' ' + data[i].id;
+                
+                const name = document.createElement('p');
                 name.innerText = 'Name:' + ' ' + data[i].name;
+                
+                const activeStatus = document.createElement('p');
                 activeStatus.innerText = 'Active:' + ' ' + data[i].active;
+                
+                const homePort = document.createElement('p');
                 homePort.innerText = 'Home Port:' + ' ' + data[i].home_port;
+                
                 /// Images
+                const img = document.createElement('img');
                 img.src = data[i].image ? data[i].image : "https://via.placeholder.com/150"
-                img.classList.add('ships-imgs')
+                img.classList.add('ships-imgs');
+                
+                const yearP = document.createElement('p');
+                yearP.innerText = `Year Built: ${data[i].year_built}`;
+                
+                div.append(img,name, activeStatus,homePort,yearP);
+                
                 /// Appending the Data
-                div.append(name, activeStatus, img);
                 contentContainer.appendChild(div);
             }
         });
