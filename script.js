@@ -81,7 +81,7 @@ const fetchCapsules = () => {
                 waterLandings.innerText = 'Water Landings:' + ' ' + data[i].water_landings;
                 lastUpdates.innerText = 'Latest Update:' + ' ' + data[i].last_update;
                 /// Appending the Data
-                div.append(id, type, landLandings, waterLandings, lastUpdates);
+                div.append(type, landLandings, waterLandings, lastUpdates);
                 contentContainer.appendChild(div);
             }
         });
